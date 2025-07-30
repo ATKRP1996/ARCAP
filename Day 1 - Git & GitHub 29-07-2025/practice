@@ -1,0 +1,238 @@
+🧠 Practical GitHub Tasks for Software Development Training
+🔹 Stage 1: Git Basics (Individual Level)
+Initialize a Git Repository
+
+
+Task: Create a local Git repo and push it to GitHub.
+
+
+Create a README File
+
+
+Task: Write a clear project description using Markdown (README.md).
+
+
+Commit Messages Practice
+
+
+Task: Make multiple commits with meaningful messages as they add files.
+
+
+Create Branches
+
+
+Task: Create a feature/yourname branch and switch between main and feature branches.
+
+
+Git Ignore Usage
+
+
+Task: Create a .gitignore file to exclude unnecessary files (e.g., .env, node_modules, .DS_Store).
+
+
+
+🔹 Stage 2: Collaboration & Workflow
+Fork & Clone a Repository
+
+
+Task: Fork a sample repo (provided by trainer), clone it locally, and make changes.
+
+
+Pull Request Workflow
+
+
+Task: Make changes in a branch and open a Pull Request to merge it into the main branch.
+
+
+Code Review Simulation
+
+
+Task: Review a peer’s pull request using GitHub's review tools (comments, suggestions, approvals).
+
+
+Merge Conflicts
+
+
+Task: Simulate a merge conflict and resolve it locally before pushing.
+
+
+Use Git Tags
+
+
+Task: Tag a versioned release (e.g., v1.0.0) after completing a milestone.
+
+
+
+🔹 Stage 3: Real Development Tasks
+Bug Tracker with Issues
+
+
+Task: Create and assign GitHub Issues to track bugs or new features.
+
+
+Project Board
+
+
+Task: Use GitHub Projects (Kanban board) to manage to-dos and progress.
+
+
+Wiki Documentation
+
+
+Task: Create Wiki pages for project documentation.
+
+
+Markdown Formatting
+
+
+Task: Write a detailed CONTRIBUTING.md or CHANGELOG.md with proper formatting.
+
+
+Use Actions for CI/CD
+
+
+Task: Set up a simple GitHub Actions workflow (e.g., linting, tests on push).
+
+
+
+🔹 Stage 4: Advanced Use (Optional)
+Collaborative Mini Project
+
+
+Task: Work in small teams to build a mini project (e.g., To-Do app, portfolio site) using GitHub for code collaboration.
+
+
+Release Management
+
+
+Task: Create a new release in GitHub with attached assets (like build files or documentation).
+
+
+Environment Variables
+
+
+Task: Use secrets in GitHub Actions to handle sensitive keys.
+
+
+Custom Branch Policies
+
+
+Task: Explore setting up protected branches, required reviews, or auto-deploy actions.
+
+
+Template Repository
+
+
+Task: Convert a repo into a template and use it to start new projects.
+
+
+
+📌 Final Note (Add to All Tasks)
+All GitHub activities are part of your training program to prepare you for real software development.
+ These tasks are not for company projects or commercial use. Practice responsibly.
+Here's how freshers can approach these GitHub tasks both individually and in groups, along with the option of using multiple accounts for collaboration practice:
+
+🧩 How to Approach GitHub Training Tasks
+🔹 Individual Tasks (No Group Needed)
+The following tasks can and should be done solo, using just one GitHub account:
+✅ Initialize a repo and push code
+
+
+✅ Create branches, commit, and merge
+
+
+✅ Write a README, CONTRIBUTING.md, etc.
+
+
+✅ Use .gitignore
+
+
+✅ Tag versions (git tag)
+
+
+✅ Create Issues (self-assigned)
+
+
+✅ Use GitHub Actions for automated workflows
+
+
+✅ Create project boards and wikis
+
+
+✅ Practice merge conflicts (by editing different branches)
+
+
+✅ They do not need multiple accounts or teammates for these.
+ 👨‍💻 Use local branches to simulate team workflows.
+
+🔹 Group-Based Tasks (Optional but Valuable)
+The following tasks are ideal for 2–3 member groups or using multiple GitHub accounts (can be fake/test accounts if needed for training):
+🤝 Fork & Pull Requests
+
+
+One person creates a repo; others fork it and open PRs.
+
+
+🧑‍🔧 Code Review
+
+
+Teammates review each other’s pull requests and comment/suggest changes.
+
+
+⚠️ Merge Conflict Resolution
+
+
+Two users edit the same line on different branches and try to merge = conflict.
+
+
+🛠️ Project Collaboration
+
+
+Work on a small app or page, assign issues/tasks to each other.
+
+
+📦 Release & Tag Collaboration
+
+
+One person tags/releases; others download and verify.
+
+
+🔄 If working solo, they can simulate this with 2-3 GitHub accounts and emails on the same computer or browser in incognito windows.
+
+💡 Using Multiple Accounts (Simulated Teamwork)
+To simulate teamwork without real groups, each learner can:
+Create 2 or 3 GitHub accounts (e.g., dev-uttam-1, dev-uttam-2)
+
+
+Use them to:
+
+
+Fork, push, and pull PRs
+
+
+Simulate review workflows
+
+
+Test permissions and roles
+
+
+Git setup tip:
+ To switch accounts locally:
+bash
+CopyEdit
+git config user.name "Test User"
+git config user.email "test@example.com"
+
+They can also use GitHub’s browser interface to fork, edit, and pull request without local setup if needed.
+
+📌 Recommendation
+✅ Start individually for the basics.
+
+
+👥 Form 2–3 person groups for collaboration tasks.
+
+
+🧪 Or simulate teamwork with multiple accounts per person.
+
+
+
