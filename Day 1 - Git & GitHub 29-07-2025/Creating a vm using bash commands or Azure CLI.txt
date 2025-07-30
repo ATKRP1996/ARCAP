@@ -1,0 +1,17 @@
+az login --use-device-code
+
+az group create --name Atk --location centralindia
+
+az network nsg create -g Atk -n Atk_Nsg
+
+az network nsg rule create -g Atk --nsg-name Atk_Nsg -n NsgRule1 --priority 1000 --source-address-prefixes '*' --source-port-ranges '*' --destination-address-prefixes '*' --destination-port-ranges 3389 --access Allow --protocol Tcp --description "Allow from specific IP address range 3389."
+az network nsg rule create -g Atk --nsg-name Atk_Nsg -n NsgRule2 --priority 1001 --source-address-prefixes '*' --source-port-ranges '*' --destination-address-prefixes '*' --destination-port-ranges 22 --access Allow --protocol Tcp --description "Allow from specific IP address range 22."
+
+
+az network vnet create --name Atk_vnet1 --resource-group Atk --address-prefix 10.0.0.0/16 --subnet-name sub1 --subnet-prefixes 10.0.0.0/24
+
+az network public-ip create -g Atk -n PIP1
+
+az network nic create -g Atk --vnet-name Atk_vnet1 --subnet sub1 -n MyNic --ip-forwarding --network-security-group Atk_Nsg
+
+az vm create --resource-group Atk --name myVM --image Ubuntu2204 --admin-username atkr --admin-password Naikh@123456789 --vnet-name Atk_vnet1 --subnet sub1 --nsg Atk_Nsg --public-ip-address PIP1 --nsg-rule SSH --size Standard_B1s

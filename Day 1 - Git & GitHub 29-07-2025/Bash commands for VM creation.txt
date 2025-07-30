@@ -1,0 +1,146 @@
+AZ LOGIN
+--------
+# login with a device-code
+az login --use-device-code
+or 
+# login with a tenant ID
+az login --tenant 00000000-0000-0000-0000-000000000000
+
+LOGOUT
+------
+az logout
+
+CLEAR YOUR SUBSCRIPTION CACHE
+-----------------------------
+az account clear
+
+az login
+
+FIND OR CHANGE YOUR CURRENT SUBSCRIPTION
+----------------------------------------
+az account set --subscription "<subscription ID or name>"
+
+CREATE A NEW RESOURCE GROUP(az group create)
+---------------------------
+az group create --name Atk --location centralindia
+
+az group create --location
+                --name
+                [--managed-by]
+                [--tags]
+Ex-
+az group create -l centralindia -n Atk
+
+Location = centralindia
+Resource group name = Atk
+
+DELETE A RESOURCE GROUP(az group delete)
+-----------------------
+az group delete --name
+                [--force-deletion-types {Microsoft.Compute/virtualMachineScaleSets, Microsoft.Compute/virtualMachines, Microsoft.Databricks/workspaces}]
+                [--no-wait]
+                [--yes]
+Ex-
+az group delete -n Atk
+
+Resource group name = Atk
+
+CHECK IF A RESOURCE GROUP EXISTS(az group exists)
+--------------------------------
+az group exists --name
+
+Ex-
+az group exists -n Atk
+
+CREATE A NETWORK SECURITY GROUP(az network nsg create)
+-------------------------------
+az network nsg create --name
+                      --resource-group
+                      [--location]
+                      [--no-wait {0, 1, f, false, n, no, t, true, y, yes}]
+                      [--tags]
+Ex-
+az network nsg create -g Atk -n Atk_Nsg 
+
+Resource group name = Atk
+Nsg name = Atk_Nsg
+
+DELETE A NETWORK SECURITY GROUP(az network nsg delete)
+-------------------------------
+az network nsg delete [--ids]
+                      [--name]
+                      [--no-wait {0, 1, f, false, n, no, t, true, y, yes}]
+                      [--resource-group]
+                      [--subscription]
+Ex-
+az network nsg delete -g Atk -n Atk_Nsg		
+		  
+Resource group name = Atk
+Nsg name = Atk_Nsg
+
+CREATE A NETWORK SECURITY GROUP RULE(az network nsg rule create)
+------------------------------------
+az network nsg rule create -g Atk --nsg-name Atk_Nsg -n NsgRule1 --priority 1000 --source-address-prefixes '*' --source-port-ranges '*' --destination-address-prefixes '*' --destination-port-ranges 3389 --access Allow --protocol Tcp --description "Allow from specific IP address range 3389."
+(Create a basic "Allow" NSG rule with the highest priority)
+
+az network nsg rule create -g Atk --nsg-name Atk_Nsg -n NsgRule2 --priority 1001 --source-address-prefixes '*' --source-port-ranges '*' --destination-address-prefixes '*' --destination-port-ranges 80 8080 --access Allow --protocol Tcp --description "Allow from specific IP address ranges on 80 and 8080."
+(Create a "Allow" rule over TCP for a specific IP address range with the lowest priority)
+
+
+CREATE A VIRTUAL NETWORK AND SUBNET(az network vnet create)
+-----------------------------------
+az network vnet create --name Atk_vnet1 --resource-group Atk --address-prefix 10.0.0.0/16 --subnet-name sub1 --subnet-prefixes 10.0.0.0/24
+
+az network vnet subnet create -g Atk --vnet-name Atk_vnet1 -n sub1 --address-prefixes 10.0.0.0/24 --network-security-group Atk_Nsg 
+
+Resource group name = Atk
+Vnet name = Atk_vnet1
+Address prefixes cidr = 10.0.0.0/16
+Subnet name = sub1
+Subnet 1 prefixes cidr = 10.0.0.0/24
+
+DELETE A SUBNET(az network vnet subnet delete)
+---------------
+az network vnet subnet delete --name sub1 --resource-group Atk --vnet-name Atk_vnet1
+
+CREATE A BASIC PUBLIC IP RESOURCE(az network public-ip create)
+---------------------------------
+az network public-ip create -g Atk -n PIP1
+
+az network public-ip create --resource-group Atk --name PIP1 --version IPv4 --sku Standard --zone 1 2 3 (Standard SKU)
+az network public-ip create --resource-group Atk --name PIP1 --version IPv4 --sku Basic --allocation-method Static (Basic SKU)
+
+DELETE A PUBLIC IP ADDRESS(az network public-ip delete)
+--------------------------
+az network public-ip delete -g Atk -n MyIp
+
+LIST ALL PUBLIC IPS IN A SUBSCRIPTION
+-------------------------------------
+az network public-ip list (in Subcription)
+az network public-ip list -g Atk  (in Resource Group)
+
+CREATE A NETWORK INTERFACE (NIC) (az network nic create)
+--------------------------------
+az network nic create -g Atk --vnet-name Atk_vnet1 --subnet sub1 -n MyNic
+
+az network nic create -g Atk --vnet-name Atk_vnet1 --subnet sub1 -n MyNic --ip-forwarding --network-security-group Atk_Nsg
+(Create a network interface for a specified subnet on a virtual network which allows IP forwarding subject to a network security group)
+
+az network nic create -g Atk --vnet-name Atk_vnet1 --subnet sub1 -n MyNic --network-security-group Atk_Nsg --application-security-groups Web App
+(Create a network interface for a specified subnet on a virtual network with network security group and application security groups)
+
+DELETE A NETWORK INTERFACE(az network nic delete)
+--------------------------
+az network nic delete -g Atk -n MyNic
+
+CREATE A DEFAULT WINDOWS SERVER VM with a private IP address
+----------------------------------
+az vm create -n MyVm -g Atk --public-ip-address "" --image win2016datacenter
+
+az vm create --resource-group Atk --name myVM --image win2016datacenter --admin-username azureuser --admin-password myPassword12
+
+CREATE A DEFAULT UBUNTU2204 VM with automatic SSH authentication
+------------------------------
+az vm create -n MyVm -g Atk --image Ubuntu2204
+
+az vm create --resource-group Atk --name myVM --image Ubuntu2204 --admin-username atkr --admin-password Naikh@123456789 --vnet-name Atk_vnet1 --subnet sub1 --nsg Atk_Nsg --public-ip-address PIP1 --nsg-rule SSH
