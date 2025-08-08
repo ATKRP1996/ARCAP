@@ -1,0 +1,19 @@
+How to use
+
+1. After SSH into your Azure VM:
+
+nano install_jenkins.sh
+
+Paste the script above, save with CTRL+O, exit with CTRL+X.
+
+2. Make it executable:
+
+chmod +x install_jenkins.sh
+
+3. Run it:
+
+./install_jenkins.sh
+
+4. After it finishes, open Jenkins in your browser:
+
+http://<VM-public-ip>:8080
