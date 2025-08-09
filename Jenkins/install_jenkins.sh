@@ -22,6 +22,7 @@ sudo apt install jenkins -y
 echo "Starting and enabling Jenkins service..."
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
+sudo systemctl status jenkins
 
 echo "Configuring firewall to allow SSH and Jenkins (port 8080)..."
 sudo ufw allow OpenSSH
