@@ -19,6 +19,7 @@ sudo apt install openssh-server
 sudo systemctl enable ssh
 sudo systemctl start ssh
 sudo systemctl status ssh
+```
 
 ---
 
@@ -26,31 +27,31 @@ sudo systemctl status ssh
 3.1 Enable Password Authentication
 Edit the SSH configuration:
 
-bash
-Copy
-Edit
+```bash
 sudo nano /etc/ssh/sshd_config
-Change or add:
+```
 
-nginx
-Copy
-Edit
+Change or add:
+```
+```nginx
 PasswordAuthentication yes
 PermitRootLogin yes   # Only if you need root SSH (not recommended for production)
+```
+
 Restart SSH:
 
-bash
-Copy
-Edit
+```bash
 sudo systemctl restart ssh
+```
+
 3.2 Test Password SSH
 From Jenkins server or host:
 
-bash
-Copy
-Edit
+```bash
 ssh username@VM_IP
+```
 Enter the password when prompted.
+
 
 3.3 Add Jenkins Credentials
 Go to Manage Jenkins → Credentials → Add Credentials
@@ -65,32 +66,30 @@ Password: VM password
 
 ID: vm-ssh-password
 
+---
+
 4️⃣ Option 2 — Key Authentication (Recommended)
 4.1 Generate SSH Keys on Jenkins Server
-bash
-Copy
-Edit
+```bash
 ssh-keygen -t rsa -b 4096 -C "jenkins@vm"
+```
 Press Enter for defaults.
 
 4.2 Copy Public Key to VM
 From Jenkins server:
-
-bash
-Copy
-Edit
+```bash
 ssh-copy-id username@VM_IP
-If ssh-copy-id is unavailable:
+```
 
-bash
-Copy
-Edit
+If ssh-copy-id is unavailable:
+```bash
 cat ~/.ssh/id_rsa.pub | ssh username@VM_IP "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+```
+
 4.3 Test Key SSH
-bash
-Copy
-Edit
+```bash
 ssh username@VM_IP
+```
 You should connect without a password prompt.
 
 4.4 Add Jenkins Key Credentials
@@ -106,12 +105,12 @@ Private Key: Paste contents of ~/.ssh/id_rsa
 
 ID: vm-ssh-key
 
+---
+
 5️⃣ Using SSH in Jenkins Jobs
 Example pipeline snippet:
 
-groovy
-Copy
-Edit
+```groovy
 pipeline {
     agent any
     stages {
@@ -124,14 +123,17 @@ pipeline {
         }
     }
 }
+```
+
+---
+
 6️⃣ Security Notes
 Key authentication is more secure and should be preferred.
 
 If you enable password authentication for testing, disable it afterward:
 
-bash
-Copy
-Edit
+```bash
 sudo nano /etc/ssh/sshd_config
 # Set PasswordAuthentication no
 sudo systemctl restart ssh
+```
