@@ -24,6 +24,7 @@ sudo systemctl status ssh
 ---
 
 3️⃣ Option 1 — Password Authentication
+
 3.1 Enable Password Authentication
 Edit the SSH configuration:
 
@@ -69,6 +70,7 @@ ID: vm-ssh-password
 ---
 
 4️⃣ Option 2 — Key Authentication (Recommended)
+
 4.1 Generate SSH Keys on Jenkins Server
 ```bash
 ssh-keygen -t rsa -b 4096 -C "jenkins@vm"
