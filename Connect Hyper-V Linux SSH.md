@@ -106,15 +106,3 @@ On Windows PowerShell:
 ```powershell
 ssh -i C:\Users\YourUser\.ssh\id_rsa username@VM_IP
 ```
-
----
-
-✅ You now have secure, key-based SSH access to your Ubuntu VM.
-
-```
-
----
-
-If you want, I can also make a **second GitHub-ready Markdown file** for the **persistent Hyper-V Ubuntu network setup** so your IP settings survive reboots.  
-Do you want me to prepare that one too?
-```
