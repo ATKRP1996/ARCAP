@@ -23,7 +23,7 @@ sudo systemctl status ssh
 
 ---
 
-## 3️⃣ Option 1 — Password Authentication
+## 3️⃣ Option 1 — Password Authentication (Not Recommended)
 
 ### 3.1 Enable Password Authentication
 Edit the SSH configuration:
