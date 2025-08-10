@@ -33,7 +33,7 @@ sudo nano /etc/ssh/sshd_config
 ```
 
 Change or add:
-```
+
 ```nginx
 PasswordAuthentication yes
 PermitRootLogin yes   # Only if you need root SSH (not recommended for production)
