@@ -23,9 +23,9 @@ sudo systemctl status ssh
 
 ---
 
-3️⃣ Option 1 — Password Authentication
+## 3️⃣ Option 1 — Password Authentication
 
-3.1 Enable Password Authentication
+### 3.1 Enable Password Authentication
 Edit the SSH configuration:
 
 ```bash
@@ -45,7 +45,7 @@ Restart SSH:
 sudo systemctl restart ssh
 ```
 
-3.2 Test Password SSH
+### 3.2 Test Password SSH
 From Jenkins server or host:
 
 ```bash
@@ -54,7 +54,7 @@ ssh username@VM_IP
 Enter the password when prompted.
 
 
-3.3 Add Jenkins Credentials
+### 3.3 Add Jenkins Credentials
 Go to Manage Jenkins → Credentials → Add Credentials
 
 Kind: Username with password
@@ -69,15 +69,15 @@ ID: vm-ssh-password
 
 ---
 
-4️⃣ Option 2 — Key Authentication (Recommended)
+## 4️⃣ Option 2 — Key Authentication (Recommended)
 
-4.1 Generate SSH Keys on Jenkins Server
+### 4.1 Generate SSH Keys on Jenkins Server
 ```bash
 ssh-keygen -t rsa -b 4096 -C "jenkins@vm"
 ```
 Press Enter for defaults.
 
-4.2 Copy Public Key to VM
+### 4.2 Copy Public Key to VM
 From Jenkins server:
 ```bash
 ssh-copy-id username@VM_IP
@@ -88,13 +88,13 @@ If ssh-copy-id is unavailable:
 cat ~/.ssh/id_rsa.pub | ssh username@VM_IP "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
 ```
 
-4.3 Test Key SSH
+### 4.3 Test Key SSH
 ```bash
 ssh username@VM_IP
 ```
 You should connect without a password prompt.
 
-4.4 Add Jenkins Key Credentials
+### 4.4 Add Jenkins Key Credentials
 Go to Manage Jenkins → Credentials → Add Credentials
 
 Kind: SSH Username with private key
@@ -109,7 +109,7 @@ ID: vm-ssh-key
 
 ---
 
-5️⃣ Using SSH in Jenkins Jobs
+## 5️⃣ Using SSH in Jenkins Jobs
 Example pipeline snippet:
 
 ```groovy
@@ -129,7 +129,7 @@ pipeline {
 
 ---
 
-6️⃣ Security Notes
+## 6️⃣ Security Notes
 Key authentication is more secure and should be preferred.
 
 If you enable password authentication for testing, disable it afterward:
